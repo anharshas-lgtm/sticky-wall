@@ -1,0 +1,231 @@
+/* Sticky Wallpaper — legal pages
+   Theme: a torn page off a notepad. One signature element (the sticky-note
+   title card) carries the personality; everything else stays quiet and
+   easy to read, because these are pages people need to actually trust. */
+
+:root{
+  --paper: #F7F5EE;
+  --paper-edge: #EFEBDD;
+  --ink: #232220;
+  --ink-soft: #6b6459;
+  --ink-faint: #9a9387;
+  --line: #E3DECF;
+
+  --yellow: #FFD66B;
+  --yellow-ink: #4a3a06;
+  --coral: #FF9472;
+  --coral-ink: #4a1f0c;
+
+  --link: #245950;
+  --link-hover: #16382f;
+
+  --callout-bg: #EFF3EC;
+  --callout-line: #B9CDB8;
+
+  --radius: 3px;
+  --shadow: 0 10px 24px -12px rgba(35,34,32,0.28), 0 2px 6px -2px rgba(35,34,32,0.12);
+
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+*{ box-sizing: border-box; }
+
+html{ -webkit-text-size-adjust: 100%; }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(35,34,32,0.05) 1px, transparent 1.6px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover{ color: var(--link-hover); }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
+.page{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ---------- header ---------- */
+
+.eyebrow{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 22px;
+}
+
+.note{
+  position: relative;
+  display: inline-block;
+  padding: 22px 30px 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transform: rotate(-1.4deg);
+  margin: 0 0 28px;
+}
+.note--yellow{ background: var(--yellow); }
+.note--coral{ background: var(--coral); }
+.note::after{
+  /* a small folded corner, like the note is lifting off the page */
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.13) 50%);
+  border-bottom-right-radius: var(--radius);
+}
+.note h1{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.05;
+  margin: 0;
+}
+.note--yellow h1{ color: var(--yellow-ink); }
+.note--coral h1{ color: var(--coral-ink); }
+
+nav.tabs{
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin: 0 0 6px;
+}
+nav.tabs a{ text-decoration: none; color: var(--ink-soft); }
+nav.tabs a:hover{ color: var(--link); }
+nav.tabs a.is-active{
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-faint);
+}
+nav.tabs .tabs__sep{ color: var(--ink-faint); margin: 0 8px; }
+
+.meta{
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin: 14px 0 0;
+}
+
+.page-head{
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---------- document body ---------- */
+
+.lede{
+  font-size: 17.5px;
+  color: var(--ink-soft);
+  margin: 0 0 26px;
+}
+
+.callout{
+  background: var(--callout-bg);
+  border-left: 3px solid var(--callout-line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 0 0 32px;
+}
+.callout__label{
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 4px;
+}
+.callout p:last-child{ margin: 0; font-weight: 500; }
+
+.doc section{ margin: 0 0 30px; }
+
+.doc h2{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.doc p{ margin: 0 0 12px; color: var(--ink); }
+.doc p:last-child{ margin-bottom: 0; }
+
+.doc ul{ margin: 0 0 12px; padding-left: 22px; }
+.doc li{ margin-bottom: 8px; }
+.doc li:last-child{ margin-bottom: 0; }
+
+.rule{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 36px 0;
+}
+
+/* ---------- footer ---------- */
+
+.page-foot{
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+.page-foot p{ margin: 0 0 6px; }
+.fineprint{
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+/* ---------- index page ---------- */
+
+.index-hero{ text-align: center; padding-top: 24px; }
+.index-notes{
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.index-notes a.note{
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.index-notes a.note:nth-child(2){ transform: rotate(1.6deg); }
+.index-notes a.note:hover{ transform: translateY(-4px) rotate(0deg); }
+.index-notes .note h2{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
+.index-notes .note--yellow h2{ color: var(--yellow-ink); }
+.index-notes .note--coral h2{ color: var(--coral-ink); }
+
+@media (prefers-reduced-motion: reduce){
+  .index-notes a.note{ transition: none; }
+}
+
+@media (max-width: 480px){
+  .page{ padding: 36px 18px 60px; }
+  .note{ padding: 18px 22px 22px; transform: rotate(-0.8deg); }
+}
